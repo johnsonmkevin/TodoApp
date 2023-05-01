@@ -9,7 +9,7 @@ app.use(express.json());
 
 app.get("/todos/:userEmail", async (req, res) => {
 	const { userEmail } = req.params;
-	
+
 	console.log(req)
 
 	try {
@@ -20,7 +20,7 @@ app.get("/todos/:userEmail", async (req, res) => {
 	}
 });
 
-//create a new todo
+//Create a new todo
 app.post("/todos", async (req, res) => {
 	const { user_email, title, progress, date } = req.body;//we are attaching this to the req.body
 	console.log(user_email, title, progress, date);
