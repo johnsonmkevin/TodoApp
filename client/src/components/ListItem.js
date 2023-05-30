@@ -3,14 +3,16 @@ import ProgressBar from "./ProgressBar";
 import { BsDatabaseCheck } from "react-icons/bs";
 import { useState } from "react";
 import Modal from "./Modal";
+import { useCookies } from "react-cookie";
 
 function ListItem({ task, getData }) {
 	const [showModal, setShowModal] = useState(false);
 
 
+
 	const deleteItem = async () => {
 		try {
-			const response = await fetch(`http://localhost:8000/todos/${task.id}`, {
+			const response = await fetch(`${process.env.REACT_APP_SERVERURL}/todos/${task.id}`, {
 				method:'DELETE'
 			})
 			if (response.status === 200) {

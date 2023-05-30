@@ -1,12 +1,21 @@
 import React, { useState } from "react";
 import Modal from "./Modal";
+import { useCookies } from "react-cookie";
 
 function ListHeader({ listName, getData }) {
 	const [showModal, setShowModal] = useState(false);
+	const [cookies, setCookie, removeCookie] = useCookies(null); // [cookies, setCookie, removeCookie
 
 	const signOut = () => {
-		console.log("working");
-	};
+		console.log("sign out");
+		removeCookie("AuthToken");
+		removeCookie("Email");
+
+		window.location.reload();
+
+	}
+
+
 
 	return (
 		<div className="list-header">

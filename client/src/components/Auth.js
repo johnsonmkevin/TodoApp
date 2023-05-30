@@ -1,13 +1,17 @@
-import React from 'react'
+
 import { useState } from 'react'
+import {useCookies} from 'react-cookie'
 
 function Auth() {
+const [cookies, setCookie, removeCookie] = useCookies(null)
 const [isLoggedIn, setIsLoggedIn] = useState(true)
 const [email, setEmail] = useState(null)
 const [password, setPassword] = useState(null)
 const [confirmPassword, setConfirmPassword] = useState(null)
 const [error, setError] = useState(null)
 
+
+console.log(cookies);
 
   const viewLoggedin = (status) => {
     setError(null)
@@ -28,6 +32,15 @@ const [error, setError] = useState(null)
     })
    const data = await response.json();
    console.log(data);
+   if(data.detail){
+     setError(data.detail)
+     return
+   }else {
+    setCookie("Email", data.email)
+    setCookie("AuthToken", data.token) 
+
+    window.location.reload()
+   }
   }
   
   
@@ -36,9 +49,15 @@ const [error, setError] = useState(null)
       <div className='auth-container-box'>
         <form action="">
           <h2>{isLoggedIn ? "Please log in":"Please sign up!" }</h2>
-          <input type="email" placeholder='email' />
-          <input type="password" placeholder='password'/>
-          {!isLoggedIn && <input type="password" placeholder='confirm password' />}
+          <input type="email" 
+          placeholder='email' 
+          onChange={(e)=>setEmail(e.target.value)} />
+          <input type="password"
+           placeholder='password' 
+           onChange={(e)=>setPassword(e.target.value)}/>
+          {!isLoggedIn && <input type="password" 
+          placeholder='confirm password'
+          onChange={(e)=>setConfirmPassword(e.target.value)} />}
           <input type="submit" className='create' onClick={(e)=>handleSubmit(e, isLoggedIn ? "login" : "signup")} />
           {error && <p>{error}</p>}
         </form>

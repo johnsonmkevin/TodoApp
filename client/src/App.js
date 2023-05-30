@@ -2,13 +2,16 @@ import React, { useEffect, useState } from "react";
 import ListHeader from "./components/ListHeader";
 import ListItem from "./components/ListItem";
 import Auth from "./components/Auth";
+import { useCookies } from "react-cookie";
 
 function App() {
   const [tasks, setTasks] = useState(null);
+  const [cookies, setCookie, removeCookie] = useCookies(null);
 
-  const userEmail = "kevin@test.com";
+  const userEmail = cookies.Email;
+  const authToken = cookies.AuthToken;
 
-  const authToken = false;
+  
 
   const getData = async () => {
     try {
@@ -38,6 +41,7 @@ function App() {
       {authToken ? (
         <>
           <ListHeader listName={"To Do List📝"} getData={getData} />
+          <p>Welcome back{userEmail}</p>
           {sortedTasks?.map((task) => (
             <ListItem key={task.id} task={task} getData={getData} />
           ))}
