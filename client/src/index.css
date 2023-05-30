@@ -217,3 +217,15 @@ input {
 }
 
 
+.outer-bar {
+	width: 200px;
+	height: 14px;
+	background-color: rgb(255, 255, 255);
+	border-radius: 8px;
+	overflow: hidden;
+}
+
+.inner-bar {
+	height: 14px;
+	
+}

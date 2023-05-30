@@ -28,7 +28,7 @@ function ListItem({ task, getData }) {
 			<BsDatabaseCheck />
 			<div className="information-container">
 				<p className="task-title">{task.title}</p>
-				<ProgressBar />
+				<ProgressBar progress={task.progress} />
 				<div className="btn-container">
 					<button className="edit" onClick={() => setShowModal(true)}>
 						EDIT

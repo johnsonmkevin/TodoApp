@@ -1,8 +1,14 @@
 import React from 'react'
 
-function ProgressBar() {
+
+function ProgressBar(progress) {
   return (
-    <div></div>
+    <div className='outer-bar'>
+      <div className='inner-bar' style={{width:`${progress}%`, backgroundColor: "green"}}>
+
+      </div>
+
+    </div>
   )
 }
 
