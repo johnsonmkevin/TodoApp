@@ -35,16 +35,20 @@ const [error, setError] = useState(null)
     <div className='auth-container'>
       <div className='auth-container-box'>
         <form action="">
-          <h2>{isLoggedIn ? "Please Log in":"Please Sign up!" }</h2>
+          <h2>{isLoggedIn ? "Please log in":"Please sign up!" }</h2>
           <input type="email" placeholder='email' />
           <input type="password" placeholder='password'/>
           {!isLoggedIn && <input type="password" placeholder='confirm password' />}
           <input type="submit" className='create' onClick={(e)=>handleSubmit(e, isLoggedIn ? "login" : "signup")} />
-          {error &&<p>{error}</p>}
+          {error && <p>{error}</p>}
         </form>
         <div className="auth-options">
-        <button onClick={()=>viewLoggedin(false)}>Sign up</button>
-        <button onClick={()=>viewLoggedin(true)}>Log in</button>
+        <button className="auth-Signup" onClick={()=>viewLoggedin(false)}
+        style={{backgroundColor : !isLoggedIn ? "rgb(255, 255, 255)" : "rgb(188, 188, 188)"}}
+        >Sign up</button>
+        <button className="auth-Login" onClick={()=>viewLoggedin(true)}
+        style={{backgroundColor : isLoggedIn ? "rgb(255, 255, 255)" : "rgb(188, 188, 188"}}
+        >Log in</button>
         </div>
       </div>
     </div>

@@ -69,27 +69,6 @@ app.delete("/todos/:id", async (req, res) => {
 
 
 
-//sign up 
-
-app.post("/signup", async (req, res) => {
-	
-	try{
-
-	}catch(error){
-		console.error(error);
-	}const { email, password } = req.body;
-})
-
-//login
-
-app.post("/login", async (req, res) => {
-	const { email, password } = req.body;
-	try{
-
-	}catch(error){
-		console.error(error);
-	}
-})
 
 
 app.listen(PORT, () => console.log(`Serving running on ${PORT}`));

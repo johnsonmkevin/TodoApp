@@ -12,7 +12,7 @@ function App() {
 
   const getData = async () => {
     try {
-      const response = await fetch(`http://localhost:8000/todos/${userEmail}`);
+      const response = await fetch(`${process.env.REACT_APP_SERVERURL}/todos/${userEmail}`);
       const json = await response.json();
       setTasks(json);
     } catch (err) {
@@ -26,7 +26,7 @@ function App() {
     }
   }, []); //this allows our getData function to not keep running
 
-  console.log(tasks);
+
 
   //sort by date
   //compare  dates sort method returns a new array
