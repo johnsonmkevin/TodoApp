@@ -41,7 +41,7 @@ function App() {
       {authToken ? (
         <>
           <ListHeader listName={"To Do List📝"} getData={getData} />
-          <p>Welcome back{userEmail}</p>
+          <p>Hello! {userEmail}</p>
           {sortedTasks?.map((task) => (
             <ListItem key={task.id} task={task} getData={getData} />
           ))}
