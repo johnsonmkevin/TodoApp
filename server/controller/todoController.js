@@ -8,7 +8,7 @@ const getTodos = async (req, res) => {
 
 	try {
 		const todos = await pool.query("SELECT * FROM todos WHERE user_email = $1", [userEmail]);
-		res.json(todos.rows);
+		res.json(todos.rows);//show in the browser as json
 	} catch (err) {
 		console.error(err);
 	}
