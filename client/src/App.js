@@ -18,6 +18,9 @@ function App() {
       const response = await fetch(`${process.env.REACT_APP_SERVERURL}/todos/${userEmail}`);
       const json = await response.json();
       setTasks(json);
+      if (response.status === 200) {
+				console.log("Worked");
+      }
     } catch (err) {
       console.error(err);
     }
